@@ -4,7 +4,7 @@
       <div class="card shadow-sm">
         <div class="card-body p-4">
           <h1 class="h4 mb-3">Logga in</h1>
-          <p class="text-muted mb-4">Använd demo-konton för nu.</p>
+          <p class="text-muted mb-4">Logga in med ditt konto.</p>
 
           <form [formGroup]="form" (ngSubmit)="submit()">
             <div class="mb-3">
@@ -42,28 +42,23 @@
             </div>
 
             <div class="d-grid gap-2">
-            <button class="btn btn-primary w-100" type="submit" [disabled]="form.invalid">
-              Logga in
-            </button>
-            <button class="btn btn-primary w-100" type="submit" [disabled]="form.invalid">
-              Registrera
-            </button>
+              <button class="btn btn-primary w-100" type="submit" [disabled]="form.invalid">
+                Logga in
+              </button>
+              <a class="btn btn-outline-secondary w-100" routerLink="/register">
+                Skapa konto
+              </a>
             </div>
           </form>
 
           <hr class="my-4" />
 
           <div class="small">Har du inget konto?
-            <a routerLink="/register">Registrera dig här</a>
+            <a routerLink="/register">Registrera dig</a>
           </div>
 
           <div class="small text-muted">
-            Demo-konton:
-            <ul class="mb-0">
-              <li>admin / admin123</li>
-              <li>user / user123</li>
-              <li>student / student123</li>
-            </ul>
+            Har du inget konto? Registrera dig ovan.
           </div>
         </div>
       </div>

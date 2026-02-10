@@ -1,0 +1,26 @@
+# Root ignores (bookstore)
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+
+# Editor/IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Env files
+.env
+.env.*
+
+# Backend build output
+/backend/bin/
+/backend/obj/
+
+# Frontend deps/output (safety net)
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.angular/cache/
