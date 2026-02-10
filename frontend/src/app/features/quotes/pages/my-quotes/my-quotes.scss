@@ -1,0 +1,145 @@
+$card-bg: #4adfcc;
+$text: #fff;
+$muted: rgba(255,255,255,.8);
+$shadow: 0 10px 24px rgba(0,0,0,.14);
+
+.quotes-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  align-items: start;
+
+  // centrerad maxbredd så det inte blir “oändlig” rad
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 0 16px;
+}
+
+@media (max-width: 900px) {
+  .quotes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .quotes-grid { grid-template-columns: 1fr; }
+}
+
+.quote-card {
+  background: $card-bg;
+  color: $text;
+  border-radius: 16px;
+  box-shadow: $shadow;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+}
+
+.quote-body {
+  padding: 18px 18px 10px;
+  flex: 1;
+  position: relative;
+
+  // quote-mark som pseudo-element = mindre DOM, snyggare
+  &::before {
+    content: "“";
+    position: absolute;
+    left: 14px;
+    top: 6px;
+    font-family: "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 64px;      // INTE 100+
+    line-height: 1;
+    opacity: .35;         // lägger sig i bakgrunden
+    pointer-events: none;
+  }
+}
+
+.quote-text {
+  margin: 0;
+  padding-left: 28px; // ger luft från quote-mark
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.quote-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 14px;
+  background: rgba(0,0,0,.10);
+}
+
+.quote-author {
+  color: $muted;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 55%;
+}
+
+.quote-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-edit,
+.btn-delete {
+  border: 1px solid rgba(0,0,0,.35);
+  background: rgba(255,255,255,.12);
+  color: $text;
+  cursor: pointer;
+  transition: color .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.btn-edit {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.btn-delete {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+
+/* default hover (edit) */
+.btn-edit:hover {
+  background: rgba(240, 205, 5, 0.18);
+}
+
+/* danger hover (delete) */
+.btn-delete:hover {
+  color: #dc3545; // Bootstrap danger
+  background: rgba(220, 53, 69, 0.15);
+  border-color: rgba(220, 53, 69, 0.45);
+}
+
+.btn-edit:active,
+.btn-delete:active {
+  transform: translateY(1px);
+}
+
+@media (min-width: 901px) {
+  .quotes-grid > .quote-card:last-child:nth-child(3n + 1) {
+    grid-column: 2; // mittenkolumnen
+    justify-self: center;
+  }
+}
+
+@media (min-width: 521px) and (max-width: 900px) {
+  .quotes-grid > .quote-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 520px;
+  }
+}

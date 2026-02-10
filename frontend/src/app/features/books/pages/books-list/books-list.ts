@@ -12,19 +12,30 @@ import { BookStoreService, Book } from '../../services/book-store.service';
 })
 export class BooksList {
   books: Book[] = [];
+  error = '';
 
   constructor(private store: BookStoreService) {
     this.refresh();
   }
 
   refresh() {
-    this.books = this.store.getAll();
+    this.error = '';
+    this.store.getAll().subscribe({
+      next: (books) => (this.books = books),
+      error: () => {
+        this.error = 'Kunde inte hämta böcker. Kontrollera att du är inloggad.';
+      }
+    });
   }
 
   deleteBook(id: number) {
     if (!confirm('Är du säker på att du vill radera boken?')) return;
-    this.store.remove(id);
-    this.refresh();
+    this.store.remove(id).subscribe({
+      next: () => this.refresh(),
+      error: () => {
+        this.error = 'Kunde inte radera boken.';
+      }
+    });
   }
 
 }

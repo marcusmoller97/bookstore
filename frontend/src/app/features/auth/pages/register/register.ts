@@ -50,7 +50,7 @@ export class RegisterComponent {
         setTimeout(() => this.router.navigate(['/login']), 800);
       },
       error: (err) => {
-        /* console.error('Registration error:', err); */
+        console.log(Response)
         this.error = 'Registrering misslyckades. Försök igen.';
         this.success = '';
       },
