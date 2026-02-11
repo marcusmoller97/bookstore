@@ -91,6 +91,12 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
   gap: 8px;
 }
 
+.add-quote-btn {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .btn-edit,
 .btn-delete {
   border: 1px solid rgba(0,0,0,.35);
@@ -134,7 +140,7 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
 
 @media (min-width: 901px) {
   .quotes-grid > .quote-card:last-child:nth-child(3n + 1) {
-    grid-column: 2; // mittenkolumnen
+    grid-column: 2;
     justify-self: center;
   }
 }
