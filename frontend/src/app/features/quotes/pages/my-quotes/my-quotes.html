@@ -37,7 +37,7 @@
         <span class="quote-author">{{ quote.author }}</span>
 
         <div class="quote-actions">
-          <button type="button" class="btn-edit">
+          <button type="button" class="btn-edit" [routerLink]="['/quotes', quote.id, 'edit']">
             <i class="fa-solid fa-pen text-warning"></i>
           </button>
           <button
