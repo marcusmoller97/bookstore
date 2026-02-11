@@ -29,7 +29,7 @@
               <td>{{ book.publishedDate }}</td>
               <td class="text-end">
                 <a class="btn btn-outline-warning btn-sm me-2" [routerLink]="['/books', book.id, 'edit']">
-                  <i class="fa-solid fa-pen-to-square"></i>
+                  <i class="fa-solid fa-pen"></i>
                 </a>
                 <button class="btn btn-outline-danger btn-sm" type="button" (click)="deleteBook(book.id)">
                   <i class="fa-solid fa-trash"></i>

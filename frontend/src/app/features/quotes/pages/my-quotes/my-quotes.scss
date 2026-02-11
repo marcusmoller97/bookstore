@@ -1,4 +1,4 @@
-$card-bg: #4adfcc;
+$card-bg: #a4a78b;
 $text: #fff;
 $muted: rgba(255,255,255,.8);
 $shadow: 0 10px 24px rgba(0,0,0,.14);
@@ -9,7 +9,6 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
   grid-template-columns: repeat(1, minmax(0, 1fr));
   align-items: start;
 
-  // centrerad maxbredd så det inte blir “oändlig” rad
   max-width: 1100px;
   margin: 18px auto;
   padding: 0 16px;
@@ -39,7 +38,6 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
   flex: 1;
   position: relative;
 
-  // quote-mark som pseudo-element = mindre DOM, snyggare
   &::before {
     content: "“";
     position: absolute;
@@ -47,19 +45,25 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
     top: 6px;
     font-family: "Times New Roman", serif;
     font-weight: 700;
-    font-size: 64px;      // INTE 100+
+    font-size: 64px;
     line-height: 1;
-    opacity: .35;         // lägger sig i bakgrunden
+    opacity: .35;
     pointer-events: none;
   }
 }
 
+.quote-main-header {
+    padding-top: 10;
+    font-weight: 800;
+}
+
 .quote-text {
   margin: 0;
-  padding-left: 28px; // ger luft från quote-mark
-  font-size: clamp(14px, 1.2vw, 18px);
-  line-height: 1.45;
+  padding-top: 2rem;
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.5;
   font-weight: 600;
+  text-align: center;
 }
 
 .quote-footer {
@@ -74,7 +78,7 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
 
 .quote-author {
   color: $muted;
-  font-size: 13px;
+  font-size: clamp(13px, 1vw, 16px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -112,12 +116,11 @@ $shadow: 0 10px 24px rgba(0,0,0,.14);
   font-size: 14px;
 }
 
-/* default hover (edit) */
 .btn-edit:hover {
   background: rgba(240, 205, 5, 0.18);
 }
 
-/* danger hover (delete) */
+
 .btn-delete:hover {
   color: #dc3545; // Bootstrap danger
   background: rgba(220, 53, 69, 0.15);

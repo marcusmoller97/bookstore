@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './my-quotes.scss',
 })
 export class MyQuotes {
+  error = '';
   quotes = [
     { id: 1, text: 'Allt vi har att besluta är vad vi ska göra med den tid som ges oss.', author: 'J.R.R. Tolkien' },
     { id: 2, text: 'Det finns inget så praktiskt som en bra teori.', author: 'Kurt Lewin' },
