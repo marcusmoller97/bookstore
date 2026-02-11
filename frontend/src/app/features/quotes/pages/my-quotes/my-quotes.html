@@ -3,12 +3,23 @@
   style="width: 80%; max-width: 1100px"
 >
   <div class="pt-2">
-    <h1 class="font-weight-bold text-center quote-main-header">Mina citat</h1>
+    <div class="d-flex align-items-center justify-content-center gap-4">
+      <i class="fa-regular fa-comment quote-main-header"></i>
+      <h1 class="font-weight-bold text-center quote-main-header">Mina citat</h1>
+    </div>
     <p class="text-muted mb-4">Ord som inspirerar</p>
   </div>
-  <button class="btn btn-outline-success add-quote-btn" routerLink="/quotes/new">
-    <i class="fa-solid fa-plus"></i>
-    Lägg till
+  <button
+    class="btn add-quote-btn"
+    [disabled]="isMaxedReached()"
+    [ngClass]="{ 'btn-outline-success': !isMaxedReached() }"
+    routerLink="/quotes/new"
+  >
+    <i *ngIf="isMaxedReached(); else plusicon" class="fa-solid fa-house-circle-exclamation"></i>
+    <ng-template #plusicon>
+      <i class="fa-solid fa-plus"></i>
+    </ng-template>
+    {{ isMaxedReached() ? 'Max 5 citat' : 'Lägg till citat' }}
   </button>
 </div>
 <div class="quotes-grid">

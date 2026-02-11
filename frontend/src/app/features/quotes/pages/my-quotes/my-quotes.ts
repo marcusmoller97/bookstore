@@ -18,4 +18,8 @@ export class MyQuotes {
     { id: 4, text: 'Den som har ett varför kan uthärda nästan vilket hur som helst.', author: 'Friedrich Nietzsche' },
     { id: 5, text: 'Gör det lilla du kan, där du är, med det du har.', author: 'Theodore Roosevelt' },
   ];
+
+  isMaxedReached(): boolean {
+    return this.quotes.length >= 5;
+  }
 }
