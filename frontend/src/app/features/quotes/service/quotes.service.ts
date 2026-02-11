@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 export type Quote = {
   id: number;
@@ -15,7 +16,7 @@ export type QuotePayload = Omit<Quote, 'id'>;
   providedIn: 'root',
 })
 export class QuotesService {
-  private readonly baseUrl = 'http://localhost:5017/api/quotes';
+  private readonly baseUrl = `${environment.apiBaseUrl}/api/quotes`;
   
   constructor(
     private http: HttpClient,

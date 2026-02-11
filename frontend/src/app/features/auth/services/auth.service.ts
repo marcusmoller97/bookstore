@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 export type AuthResponse = {
   token: string;
@@ -19,7 +20,7 @@ export type RegisterRequest = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly baseUrl = 'http://localhost:5017/api/auth';
+  private readonly baseUrl = `${environment.apiBaseUrl}/api/auth`;
   private readonly tokenKey = 'auth_token';
   private readonly userKey = 'auth_user';
 

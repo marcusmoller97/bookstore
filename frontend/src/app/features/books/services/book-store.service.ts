@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
+import { environment } from '../../../../environments/environment';
 
 export type Book = {
   id: number;
@@ -14,7 +15,7 @@ export type BookPayload = Omit<Book, 'id'>;
 
 @Injectable({ providedIn: 'root' })
 export class BookStoreService {
-  private readonly baseUrl = 'http://localhost:5017/api/books';
+  private readonly baseUrl = `${environment.apiBaseUrl}/api/books`;
 
   constructor(
     private http: HttpClient,
