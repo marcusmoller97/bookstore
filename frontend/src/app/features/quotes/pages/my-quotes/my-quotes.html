@@ -40,7 +40,12 @@
           <button type="button" class="btn-edit">
             <i class="fa-solid fa-pen text-warning"></i>
           </button>
-          <button type="button" class="btn-delete" aria-label="Delete">
+          <button
+            type="button"
+            class="btn-delete"
+            (click)="deleteQuote(quote.id)"
+            aria-label="Delete"
+          >
             <i class="fa-solid fa-trash text-danger"></i>
           </button>
         </div>
@@ -48,3 +53,4 @@
     </article>
   </ng-template>
 </div>
+<app-confirm-choice> </app-confirm-choice>
