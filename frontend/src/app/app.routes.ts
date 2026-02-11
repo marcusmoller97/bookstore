@@ -4,13 +4,14 @@ import { RegisterComponent } from './features/auth/pages/register/register';
 import { BooksList } from './features/books/pages/books-list/books-list';
 import { BookForm } from './features/books/pages/book-form/book-form';
 import { MyQuotes } from './features/quotes/pages/my-quotes/my-quotes';
+import { authGuard, guestGuard } from './features/auth/guards/auth-guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'books', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'books', component: BooksList },
-    { path: 'books/new', component: BookForm },
-    { path: 'books/:id/edit', component: BookForm },
-    { path: 'quotes', component: MyQuotes }
+    { path: 'login', component: LoginComponent,  canActivate: [guestGuard] },
+    { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
+    { path: 'books', component: BooksList, canActivate: [authGuard] },
+    { path: 'books/new', component: BookForm, canActivate: [authGuard] },
+    { path: 'books/:id/edit', component: BookForm, canActivate: [authGuard] },
+    { path: 'quotes', component: MyQuotes, canActivate: [authGuard] },
 ];
