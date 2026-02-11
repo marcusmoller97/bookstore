@@ -3,3 +3,18 @@ nav {
     letter-spacing: 0.2px;
   }
 }
+
+@media (max-width: 991px) {
+  .navbar-mobile-menu {
+    justify-content: center;
+    gap: 2rem;
+    
+  }
+}
+
+@media (max-width: 194px) {
+  .navbar-mobile-menu {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

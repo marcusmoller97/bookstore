@@ -1,0 +1,48 @@
+<div class="container py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div>
+      <h1 class="h4 mb-1">{{ isEdit ? 'Redigera citat' : 'Nytt citat' }}</h1>
+      <p class="text-muted mb-0">
+        {{ isEdit ? 'Uppdatera ditt citat.' : 'Lägg till ett nytt citat.' }}
+      </p>
+    </div>
+    <a class="btn btn-outline-secondary" routerLink="/quotes">Tillbaka</a>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label class="form-label" for="text">Citat</label>
+          <textarea
+            id="text"
+            rows="4"
+            class="form-control"
+            formControlName="text"
+            placeholder="Skriv citatet här..."
+          ></textarea>
+          <div class="form-text text-danger" *ngIf="form.controls.text.touched && form.controls.text.invalid">
+            Citatet måste vara minst 2 tecken.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="author">Författare</label>
+          <input id="author" type="text" class="form-control" formControlName="author" />
+          <div class="form-text text-danger" *ngIf="form.controls.author.touched && form.controls.author.invalid">
+            Författare måste vara minst 2 tecken.
+          </div>
+        </div>
+
+        <div class="alert alert-danger py-2" role="alert" *ngIf="error">
+          {{ error }}
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+          {{ isEdit ? 'Spara ändringar' : 'Spara citat' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<p>quote-form works!</p>

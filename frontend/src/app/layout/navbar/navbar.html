@@ -24,7 +24,7 @@
         </li>
       </ul>
 
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-items-center gap-2 navbar-mobile-menu">
         <ng-container *ngIf="isLoggedIn; else loggedOut">
           <span class="small text-muted">Inloggad som {{ username }}</span>
           <a class="btn btn-outline-secondary btn-sm" routerLink="/login" (click)="logout()">

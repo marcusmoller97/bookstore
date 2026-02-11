@@ -23,22 +23,28 @@
   </button>
 </div>
 <div class="quotes-grid">
-  <article *ngFor="let quote of quotes" class="quote-card">
-    <div class="quote-body">
-      <p class="quote-text">{{ quote.text }}</p>
-    </div>
+  <div *ngIf="isEmpty(); else quotesList" class="text-center text-muted py-4">
+    <p class="mb-0">Lägg till ditt första citat!</p>
+  </div>
 
-    <footer class="quote-footer">
-      <span class="quote-author">{{ quote.author }}</span>
-
-      <div class="quote-actions">
-        <button type="button" class="btn-edit">
-          <i class="fa-solid fa-pen text-warning"></i>
-        </button>
-        <button type="button" class="btn-delete" aria-label="Delete">
-          <i class="fa-solid fa-trash text-danger"></i>
-        </button>
+  <ng-template #quotesList>
+    <article *ngFor="let quote of quotes" class="quote-card">
+      <div class="quote-body">
+        <p class="quote-text">{{ quote.text }}</p>
       </div>
-    </footer>
-  </article>
+
+      <footer class="quote-footer">
+        <span class="quote-author">{{ quote.author }}</span>
+
+        <div class="quote-actions">
+          <button type="button" class="btn-edit">
+            <i class="fa-solid fa-pen text-warning"></i>
+          </button>
+          <button type="button" class="btn-delete" aria-label="Delete">
+            <i class="fa-solid fa-trash text-danger"></i>
+          </button>
+        </div>
+      </footer>
+    </article>
+  </ng-template>
 </div>

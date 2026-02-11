@@ -20,5 +20,24 @@ services:
       timeout: 5s
       retries: 10
 
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bookstore-api
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://0.0.0.0:8080
+      ConnectionStrings__DefaultConnection: server=mysql;port=3306;database=${MYSQL_DATABASE};user=${MYSQL_USER};password=${MYSQL_PASSWORD}
+      Jwt__Issuer: BookApi
+      Jwt__Audience: BookApiUsers
+      Jwt__Key: ${JWT_KEY}
+    ports:
+      - "5017:8080"
+
 volumes:
   mysql_data:
