@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -10,6 +10,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  theme: 'light' | 'dark' = 'light';
+
+  ngOnInit(): void {
+    const stored = localStorage.getItem('theme');
+    this.theme = stored === 'dark' ? 'dark' : 'light';
+    this.applyTheme();
+  }
+
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('auth_token');
   }
@@ -28,4 +36,13 @@ export class Navbar {
     localStorage.removeItem('auth_user');
   }
 
+  toggleTheme() {
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', this.theme);
+    this.applyTheme();
+  }
+
+  private applyTheme() {
+    document.documentElement.setAttribute('data-bs-theme', this.theme);
+  }
 }
