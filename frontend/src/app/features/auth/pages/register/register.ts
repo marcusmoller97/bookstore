@@ -38,7 +38,6 @@ export class RegisterComponent {
     if (this.form.invalid) return;
 
     const payload = this.form.getRawValue();
-    /* if (payload.password ) */
     if (payload.password !== payload.confirmPassword) {
       this.error = 'Lösenorden matchar inte.';
       this.success = '';
@@ -56,7 +55,6 @@ export class RegisterComponent {
         setTimeout(() => this.router.navigate(['/login']), 800);
       },
       error: (err) => {
-        console.log(Response);
         this.error = 'Registrering misslyckades. Försök igen.';
         this.success = '';
       },

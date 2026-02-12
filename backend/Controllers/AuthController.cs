@@ -1,9 +1,8 @@
-using System.Security.Cryptography;
-using System.Text;
 using BookApi.Data;
 using BookApi.Dtos;
 using BookApi.Models;
 using BookApi.Services;
+using BCrypt.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,12 +21,10 @@ public class AuthController(AppDbContext db, TokenService tokenService) : Contro
             return BadRequest("Användarnamnet är redan taget.");
         }
 
-        CreatePasswordHash(request.Password, out var hash, out var salt);
         var user = new User
         {
             Username = request.Username,
-            PasswordHash = hash,
-            PasswordSalt = salt
+            PasswordHash = HashPassword(request.Password),
         };
 
         db.Users.Add(user);
@@ -43,7 +40,7 @@ public class AuthController(AppDbContext db, TokenService tokenService) : Contro
         var user = await db.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
         if (user == null) return Unauthorized("Fel användarnamn eller lösenord.");
 
-        if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+        if (!VerifyPasswordHash(request.Password, user.PasswordHash))
         {
             return Unauthorized("Fel användarnamn eller lösenord.");
         }
@@ -52,17 +49,13 @@ public class AuthController(AppDbContext db, TokenService tokenService) : Contro
         return Ok(new AuthResponse(token, user.Username));
     }
 
-    private static void CreatePasswordHash(string password, out byte[] hash, out byte[] salt)
+    private static string HashPassword(string password)
     {
-        using var hmac = new HMACSHA256();
-        salt = hmac.Key;
-        hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        return BCrypt.Net.BCrypt.HashPassword(password);
     }
 
-    private static bool VerifyPasswordHash(string password, byte[] hash, byte[] salt)
+    private static bool VerifyPasswordHash(string password, string hashedPassword)
     {
-        using var hmac = new HMACSHA256(salt);
-        var computed = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-        return computed.SequenceEqual(hash);
+        return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
     }
 }
