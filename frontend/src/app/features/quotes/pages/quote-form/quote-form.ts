@@ -24,8 +24,8 @@ export class QuoteForm {
     private router: Router,
   ) {
     this.form = this.fb.nonNullable.group({
-      author: ['', [Validators.required, Validators.minLength(2)]],
-      text: ['', [Validators.required, Validators.minLength(5)]],
+      author: ['', [Validators.required, Validators.minLength(2), Validators.pattern(/^[^<>]*$/)]],
+      text: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[^<>]*$/)]],
     });
 
     const idParam = this.route.snapshot.paramMap.get('id');

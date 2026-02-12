@@ -22,9 +22,20 @@ export class RegisterComponent {
     private auth: AuthService,
   ) {
     this.form = this.fb.nonNullable.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      username: [
+        '',
+        [Validators.required, Validators.minLength(3), Validators.pattern(/^[^<>]*$/)],
+      ],
+      password: [
+        '',
+        [Validators.required, Validators.minLength(6)],
+        Validators.pattern(/^[^<>]*$/),
+      ],
+      confirmPassword: [
+        '',
+        [Validators.required, Validators.minLength(6)],
+        Validators.pattern(/^[^<>]*$/),
+      ],
     });
   }
 
@@ -41,7 +52,6 @@ export class RegisterComponent {
     // db registration call
     this.auth.register({ username: payload.username, password: payload.password }).subscribe({
       next: (response) => {
-        /* console.log('Registration successful:', response); */
         this.error = '';
         this.success = 'Registrering klar! Du kan logga in nu.';
         this.form.reset();
@@ -50,11 +60,10 @@ export class RegisterComponent {
         setTimeout(() => this.router.navigate(['/login']), 800);
       },
       error: (err) => {
-        console.log(Response)
+        console.log(Response);
         this.error = 'Registrering misslyckades. Försök igen.';
         this.success = '';
       },
     });
-
   }
 }
