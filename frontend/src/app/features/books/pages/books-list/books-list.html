@@ -1,10 +1,13 @@
 <div class="container py-4">
   <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
     <div>
-      <h1 class="h4 mb-1">Böcker</h1>
+      <h1 class="h4 mb-1"><i class="fa-solid fa-book"></i>Böcker</h1>
       <p class="text-muted mb-0">Hantera din boklista.</p>
     </div>
-    <a class="btn btn-primary" routerLink="/books/new">Lägg till ny bok</a>
+    <a class="btn btn-primary" routerLink="/books/new">
+      <i class="fa-solid fa-plus"></i>
+      Lägg till bok
+    </a>
   </div>
 
   <div class="card shadow-sm">
@@ -28,10 +31,17 @@
               <td>{{ book.author }}</td>
               <td>{{ book.publishedDate }}</td>
               <td class="text-end">
-                <a class="btn btn-outline-warning btn-sm me-2" [routerLink]="['/books', book.id, 'edit']">
+                <a
+                  class="btn btn-outline-warning btn-sm me-2"
+                  [routerLink]="['/books', book.id, 'edit']"
+                >
                   <i class="fa-solid fa-pen"></i>
                 </a>
-                <button class="btn btn-outline-danger btn-sm" type="button" (click)="deleteBook(book.id)">
+                <button
+                  class="btn btn-outline-danger btn-sm"
+                  type="button"
+                  (click)="deleteBook(book.id)"
+                >
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </td>
