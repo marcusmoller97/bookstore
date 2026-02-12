@@ -28,14 +28,9 @@ export class RegisterComponent {
       ],
       password: [
         '',
-        [Validators.required, Validators.minLength(6)],
-        Validators.pattern(/^[^<>]*$/),
+        [Validators.required, Validators.minLength(6), Validators.pattern(/^[^<>]*$/)],
       ],
-      confirmPassword: [
-        '',
-        [Validators.required, Validators.minLength(6)],
-        Validators.pattern(/^[^<>]*$/),
-      ],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -43,6 +38,7 @@ export class RegisterComponent {
     if (this.form.invalid) return;
 
     const payload = this.form.getRawValue();
+    /* if (payload.password ) */
     if (payload.password !== payload.confirmPassword) {
       this.error = 'Lösenorden matchar inte.';
       this.success = '';

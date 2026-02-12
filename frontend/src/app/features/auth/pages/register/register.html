@@ -33,7 +33,8 @@
                 autocomplete="new-password"
               />
               <div class="form-text text-danger" *ngIf="form.controls.password.touched && form.controls.password.invalid">
-                Minst 6 tecken.
+                Minst 6 tecken. Endast text är tillåten (inga < eller >).
+
               </div>
             </div>
 
