@@ -7,10 +7,16 @@ $shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
   display: grid;
   gap: 18px;
   grid-template-columns: 1fr; // mobil default
-  grid-auto-rows: 1fr; // lika höga rader
+  grid-auto-rows: 1fr;
   max-width: 1100px;
   margin: 18px auto;
   padding: 0 16px;
+
+  .empty-state {
+    grid-column: 1 / -1; // spänn över båda kolumner
+    justify-self: center; // centrera inom raden
+    text-align: center;
+  }
 }
 
 @media (min-width: 700px) {
@@ -19,9 +25,6 @@ $shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
 
     & > .quote-card:last-child:nth-child(odd) {
       grid-column: 1 / -1;
-    }
-
-    & > .quote-card:last-child:nth-child(odd) {
       justify-self: center;
     }
   }
@@ -59,7 +62,7 @@ $shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
 }
 
 .quote-main-header {
-  padding-top: 10;
+  padding-top: 10px;
   font-weight: 800;
 }
 

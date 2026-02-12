@@ -5,7 +5,7 @@
   <div class="pt-2">
     <div class="d-flex align-items-center justify-content-center gap-2">
       <i class="fa-regular fa-comment quote-main-header"></i>
-      <h1 class="font-weight-bold text-center quote-main-header">Mina citat</h1>
+      <h1 class="h4 font-weight-bold text-center quote-main-header">Mina citat</h1>
     </div>
     <p class="text-muted mb-4">Ord som inspirerar</p>
   </div>
@@ -23,7 +23,7 @@
   </button>
 </div>
 <div class="quotes-grid">
-  <div *ngIf="isEmpty(); else quotesList" class="text-center text-muted py-4">
+  <div *ngIf="isEmpty(); else quotesList" class="empty-state text-center text-muted py-4">
     <p class="mb-0">Lägg till ditt första citat!</p>
   </div>
 
