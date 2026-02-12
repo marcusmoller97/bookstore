@@ -1,0 +1,21 @@
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modal.show .modal-dialog {
+  animation: bounceIn 0.25s ease;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.45);
+}
