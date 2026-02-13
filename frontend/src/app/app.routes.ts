@@ -7,6 +7,7 @@ import { MyQuotes } from './features/quotes/pages/my-quotes/my-quotes';
 import { authGuard, guestGuard } from './features/auth/guards/auth-guard';
 import { QuoteForm } from './features/quotes/pages/quote-form/quote-form';
 import { Title } from '@angular/platform-browser';
+import { quotesLimitGuard } from './features/quotes/guards/quotes-limit-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'books', pathMatch: 'full' },
@@ -21,7 +22,7 @@ export const routes: Routes = [
   { path: 'books/new', component: BookForm, title: 'Ny bok', canActivate: [authGuard] },
   { path: 'books/:id/edit', component: BookForm, title: 'Redigera bok', canActivate: [authGuard] },
   { path: 'quotes', component: MyQuotes, title: 'Mina citat', canActivate: [authGuard] },
-  { path: 'quotes/new', component: QuoteForm, title: 'Nytt citat', canActivate: [authGuard] },
+  { path: 'quotes/new', component: QuoteForm, title: 'Nytt citat', canActivate: [authGuard, quotesLimitGuard] },
   {
     path: 'quotes/:id/edit',
     component: QuoteForm,
