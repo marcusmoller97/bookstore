@@ -25,7 +25,12 @@
       </ul>
 
       <div class="d-flex align-items-center gap-2 navbar-mobile-menu">
-        <button class="btn btn-outline-secondary btn-sm" type="button" (click)="toggleTheme()">
+        <button
+          class="btn btn-outline-secondary btn-sm"
+          type="button"
+          (click)="toggleTheme()"
+          [attr.aria-label]="'Byt till ' + (theme === 'dark' ? 'ljust' : 'mörkt') + ' läge'"
+        >
           <i class="fa-solid" [ngClass]="theme === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
         </button>
         <ng-container *ngIf="isLoggedIn; else loggedOut">

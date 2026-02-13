@@ -31,16 +31,18 @@
               <td>{{ book.author }}</td>
               <td>{{ book.publishedDate }}</td>
               <td class="text-end">
-                <a
+                <button
                   class="btn btn-outline-warning btn-sm me-2"
                   [routerLink]="['/books', book.id, 'edit']"
+                  [attr.aria-label]="'Redigera ' + book.title"
                 >
                   <i class="fa-solid fa-pen"></i>
-                </a>
+                </button>
                 <button
                   class="btn btn-outline-danger btn-sm"
                   type="button"
                   (click)="deleteBook(book.id)"
+                  [attr.aria-label]="'Ta bort ' + book.title"
                 >
                   <i class="fa-solid fa-trash"></i>
                 </button>
