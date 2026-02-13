@@ -54,7 +54,7 @@ export class BookForm {
       this.store.update(this.bookId, payload).subscribe({
         next: () => this.router.navigate(['/books']),
         error: () => {
-          this.error = 'Kunde inte uppdatera boken.';
+          this.error = 'Kunder inte uppdatera boken. Kontrollera fälten.';
         }
       });
       return;
@@ -63,7 +63,7 @@ export class BookForm {
     this.store.create(payload).subscribe({
       next: () => this.router.navigate(['/books']),
       error: () => {
-        this.error = 'Kunde inte skapa boken.';
+        this.error = 'Kunde inte skapa boken. Kontrollera fälten.';
       }
     });
   }

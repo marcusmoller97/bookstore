@@ -52,7 +52,7 @@ export class QuoteForm {
       this.store.update(this.quoteId, payload).subscribe({
         next: () => this.router.navigate(['/quotes']),
         error: () => {
-          this.error = 'Kunde inte uppdatera citatet.';
+          this.error = 'Kunde inte uppdatera citatet. Kontrollera fälten.';
         }
       });
       return;
