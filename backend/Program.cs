@@ -42,7 +42,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("frontend", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("http://localhost:4200", "https://bookstore-65a990sri-marcusmoller97s-projects.vercel.app")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
