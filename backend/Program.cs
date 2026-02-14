@@ -64,4 +64,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// for testing purposes
+app.MapGet("/", () => Results.Ok("Bookstore API running"));
+
 app.Run();
