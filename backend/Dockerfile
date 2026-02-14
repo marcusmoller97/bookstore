@@ -2,8 +2,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "backend.csproj"
-RUN dotnet publish "backend.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet restore "backend/backend.csproj"
+RUN dotnet publish "backend/backend.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
