@@ -45,7 +45,7 @@ builder.Services.AddCors(options =>
         policy
             .WithOrigins(
                 "http://localhost:4200",
-                "https://proj-bookstore.netlify.app"
+                "https://bookstore-xr42.onrender.com"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
