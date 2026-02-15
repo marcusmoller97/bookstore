@@ -43,7 +43,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("frontend", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200", "https://bookstore-neon-six.vercel.app")
+            .WithOrigins(
+                "http://localhost:4200",
+                "https://proj-bookstore.netlify.app"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -64,7 +67,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// for testing purposes
+// to see that it runs wihtout being logged in
 app.MapGet("/", () => Results.Ok("Bookstore API running"));
 
 app.Run();
